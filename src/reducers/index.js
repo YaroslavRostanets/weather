@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import cities from './cities';
-import ui from './ui';
+import citiesReducer from './cities';
+import uiReducer from './ui';
 
 export const rootReducer = combineReducers({
-  cities,
-  ui
+  cities: citiesReducer,
+  ui: uiReducer
 });

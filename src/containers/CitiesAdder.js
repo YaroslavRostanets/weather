@@ -34,20 +34,22 @@ class CitiesAdder extends Component {
 	  		abilityToAdd: true
 	  	});
 	  	geocodeByAddress(address).then(results => {
+	  		console.log(results);
 	  		this.cityObj.name = results[0]['address_components'][0]['long_name'];
 	  		return results;
 	  	})
 	  	.then(results => {
 	  		this.cityObj.coordinates.lat = results[0].geometry.location.lat();
 	  		this.cityObj.coordinates.lng = results[0].geometry.location.lng();
-	  		console.log(this.cityObj);
 	  		return results;
 	  	})
 	  	.catch(error => console.error('Error', error));
 	};
 
 	handleButton = () => {
-		this.props.addCityAction(this.cityObj);
+		console.log('heandleButton!!! ');
+		this.cityObj.uniqueId = Symbol();
+		this.props.addCityAction({...this.cityObj});
 		this.setState({
 	  		address: '',
 	  		abilityToAdd: false

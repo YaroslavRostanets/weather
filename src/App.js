@@ -1,18 +1,19 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { CssBaseline, Grid, AppBar, Toolbar, Typography, Paper } from '@material-ui/core';
+import { CssBaseline, Grid, AppBar, Toolbar, Typography } from '@material-ui/core';
 import './App.css';
 
 import CitiesAdder from './containers/CitiesAdder';
 import CitiesList from './components/CitiesList';
-import { addCity } from './actions/citiesActions';
+import Detail from './components/Detail';
 
+import { addCity} from './actions/citiesActions';
 
 class App extends Component {
 
 	render() {
-		const {citiesList} = this.props.cities;
 		const {addCityAction} = this.props;
+		const {cityDetail} = this.props;
 
 		return(
 			<CssBaseline>
@@ -26,15 +27,10 @@ class App extends Component {
       			<Grid className="container" container spacing={16}>
       				<Grid item xs={3}>
       					<CitiesAdder addCityAction={addCityAction} />
-						<CitiesList citiesList={citiesList} />
+						<CitiesList />
       				</Grid>
       				<Grid item xs={9}>
-      					<Paper elevation={1} style={{padding: '24px'}}>
-							<Typography variant="h6" component="h5">
-          						Погода в городе <b>Киев</b> 
-        					</Typography>
-        					     
-						</Paper>
+      					<Detail cityDetail={cityDetail} />
       				</Grid>
       			</Grid>
 					
@@ -45,14 +41,14 @@ class App extends Component {
 
 const mapStateToProps = store => {
 	return {
-		ui: store.ui,
-		cities: store.cities
+		activeListItemId: store.ui.activeListItemId,
+		cityDetail: store.cities.detailCity
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		addCityAction: city => dispatch(addCity(city))
+		addCityAction: city => dispatch(addCity(city)),
 	}
 }
 

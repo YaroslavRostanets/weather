@@ -1,23 +1,41 @@
-import React, {Component} from 'react';
-import propTypes from 'prop-types'
-import { List, ListItem, ListItemText, Paper } from '@material-ui/core';
+import React, {PureComponent} from 'react';
+import propTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { List, ListItem, Paper, Typography } from '@material-ui/core';
+import CitiesListItem from './CitiesListItem';
+import InfoIcon from '@material-ui/icons/Info';
+import { removeCity, getWeatherNow, setDetailCity } from '../actions/citiesActions';
+import { setActiveItem } from '../actions/uiActions';
 
-class CitiesList extends Component {
-
-
+class CitiesList extends PureComponent {
 
 	render() {
 
-	const cities = this.props.citiesList; 
+	const cities = this.props.citiesList;
+	const { removeCityAction, getWeatherNowAction, setActiveItemAction, setDetailCityAction } = this.props;
+	const { activeListItemId } = this.props;
+	const empty = <ListItem>
+					<Typography gcomponent="p" style={{padding: '15px'}}>
+            		 	Список городов пуст
+          		  	</Typography>
+          		  	<InfoIcon/>
+          		  	</ListItem>
 
 		return (
 			<Paper>
-				<List>
+				<List component="nav">
+					{ cities.length ? null : empty }
 					{cities.map( function(city, index){
 						return(
-							<ListItem key={index}>
-		        				<ListItemText primary={city.name} secondary="+23 &#176;C" />
-		      				</ListItem>
+							<CitiesListItem 
+								key={index}
+								city={city} 
+								index={index}
+								selected={city.uniqueId === activeListItemId}
+								getWeatherNowAction={getWeatherNowAction}
+								setActiveItemAction={setActiveItemAction}
+								setDetailCityAction={setDetailCityAction}
+								removeCityAction={removeCityAction.bind(null,index)} />
 						)
 					} )}
 				</List>
@@ -30,4 +48,21 @@ CitiesList.propTypes = {
 	citiesList: propTypes.array.isRequired
 }
 
-export default CitiesList
+const mapStateToProps = store => {
+	return {
+		activeListItemId: store.ui.activeListItemId,
+		citiesList: store.cities.citiesList
+	}
+}
+
+const mapDispatchToProps = dispatch => {
+	return {
+		removeCityAction: index => dispatch(removeCity(index)),
+		getWeatherNowAction: city => dispatch(getWeatherNow(city)),
+		setActiveItemAction: uniqueId => dispatch(setActiveItem(uniqueId)),
+		setDetailCityAction: city => dispatch(setDetailCity(city))
+	}
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CitiesList)

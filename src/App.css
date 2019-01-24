@@ -1,3 +1,6 @@
+body {
+	font-family: 'Roboto', sans-serif;
+}
 .container {
 	max-width: 920px;
 	margin-left: auto !important;
@@ -14,4 +17,46 @@
 	box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 3px 1px -2px rgba(0,0,0,0.12);
 	max-height: 300px;
 	overflow: auto;
+}
+.content-top {
+    background: #243040;
+    padding: 17px 20px;
+}
+.content-top .top {
+	display: flex;
+}
+.content-left {
+    width: 25%;
+}
+.content-right {
+    width: 25%;
+    margin: 0 12px;
+}
+.content-table {
+	width: 50%;
+}
+.content-last {
+    width: 11%;
+    text-align: center;
+    border-left: 1px solid #344152;
+    margin: 0 4px;
+}
+.content-left h6 {
+	font-size: 16px;
+    color: #4C5A6D;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+.content-left h2 {
+    font-size: 58px;
+    font-weight: 300;
+    color: #fff;
+    margin: 0;
+}
+.content-right h5 {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 10px;
+    margin-top: 0;
 }
