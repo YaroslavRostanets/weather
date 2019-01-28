@@ -13,7 +13,7 @@ class CitiesList extends PureComponent {
 
 	const cities = this.props.citiesList;
 	const { removeCityAction, getWeatherNowAction, setActiveItemAction, setDetailCityAction } = this.props;
-	const { activeListItemId } = this.props;
+	const { activeUniqueId } = this.props;
 	const empty = <ListItem>
 					<Typography gcomponent="p" style={{padding: '15px'}}>
             		 	Список городов пуст
@@ -31,9 +31,8 @@ class CitiesList extends PureComponent {
 								key={index}
 								city={city} 
 								index={index}
-								selected={city.uniqueId === activeListItemId}
+								selected={city.uniqueId === activeUniqueId}
 								getWeatherNowAction={getWeatherNowAction}
-								setActiveItemAction={setActiveItemAction}
 								setDetailCityAction={setDetailCityAction}
 								removeCityAction={removeCityAction.bind(null,index)} />
 						)
@@ -50,7 +49,7 @@ CitiesList.propTypes = {
 
 const mapStateToProps = store => {
 	return {
-		activeListItemId: store.ui.activeListItemId,
+		activeUniqueId: store.cities.activeUniqueId,
 		citiesList: store.cities.citiesList
 	}
 }

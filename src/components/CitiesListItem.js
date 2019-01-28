@@ -31,10 +31,8 @@ class CitiesListItem extends PureComponent {
 	}
 
 	itemClickHeandler() {
-		let {city, setActiveItemAction, setDetailCityAction} = this.props;
-
-		setActiveItemAction(city.uniqueId);
-		setDetailCityAction(city);
+		let {city, setDetailCityAction} = this.props;
+		setDetailCityAction(city.uniqueId);
 	}
 
 }

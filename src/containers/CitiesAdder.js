@@ -28,26 +28,26 @@ class CitiesAdder extends Component {
 	    });
 	};
  
-	handleSelect = address => {
+	handleSelect = address => {	
 	  	this.setState({
-	  		address: address,
-	  		abilityToAdd: true
+	  		address: address
 	  	});
 	  	geocodeByAddress(address).then(results => {
-	  		console.log(results);
 	  		this.cityObj.name = results[0]['address_components'][0]['long_name'];
 	  		return results;
 	  	})
 	  	.then(results => {
 	  		this.cityObj.coordinates.lat = results[0].geometry.location.lat();
 	  		this.cityObj.coordinates.lng = results[0].geometry.location.lng();
+	  		this.setState({
+	  			abilityToAdd: true
+	  		});
 	  		return results;
 	  	})
 	  	.catch(error => console.error('Error', error));
 	};
 
 	handleButton = () => {
-		console.log('heandleButton!!! ');
 		this.cityObj.uniqueId = Symbol();
 		this.props.addCityAction({...this.cityObj});
 		this.setState({
@@ -83,7 +83,9 @@ class CitiesAdder extends Component {
 						{...getInputProps()}
 		      			/>
 			            <List className="autocomplete-dropdown-container">
-			              {loading && <div>Поиск...</div>}
+			              {loading && <ListItem style={{backgroundColor: '#ffffff'}}>
+			              				<ListItemText>Поиск...</ListItemText>
+			              			  </ListItem>}
 			              {suggestions.map(suggestion => {
 			                const className = suggestion.active
 			                  ? 'suggestion-item--active'

@@ -36,10 +36,19 @@ body {
 	width: 50%;
 }
 .content-last {
-    width: 11%;
+    width: 20%;
     text-align: center;
     border-left: 1px solid #344152;
     margin: 0 4px;
+}
+.content-last h6 {
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 14px;
+}
+.content-last .data {
+    font-size: 14px;
+    color: #4C5A6D;
 }
 .content-left h6 {
 	font-size: 16px;
@@ -59,4 +68,14 @@ body {
     color: #fff;
     margin-bottom: 10px;
     margin-top: 0;
+}
+.forecast {
+    color: #FFFFFF;
+    display: flex;
+}
+.forecast-header {
+    color: #4C5A6D;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-top: 15px;
 }

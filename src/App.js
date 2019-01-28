@@ -7,13 +7,16 @@ import CitiesAdder from './containers/CitiesAdder';
 import CitiesList from './components/CitiesList';
 import Detail from './components/Detail';
 
-import { addCity} from './actions/citiesActions';
+import { addCity, getForecast } from './actions/citiesActions';
 
 class App extends Component {
 
 	render() {
-		const {addCityAction} = this.props;
-		const {cityDetail} = this.props;
+		const {addCityAction, getForecastAction} = this.props;
+		const { activeUniqueId } = this.props;
+		const cityDetail = this.props.cities.find(function(city){
+			return city.uniqueId === activeUniqueId ? true : false
+		});
 
 		return(
 			<CssBaseline>
@@ -30,7 +33,7 @@ class App extends Component {
 						<CitiesList />
       				</Grid>
       				<Grid item xs={9}>
-      					<Detail cityDetail={cityDetail} />
+      					<Detail cityDetail={cityDetail} getForecastAction={getForecastAction} />
       				</Grid>
       			</Grid>
 					
@@ -41,14 +44,15 @@ class App extends Component {
 
 const mapStateToProps = store => {
 	return {
-		activeListItemId: store.ui.activeListItemId,
-		cityDetail: store.cities.detailCity
+		cities: store.cities.citiesList,
+		activeUniqueId: store.cities.activeUniqueId
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
 		addCityAction: city => dispatch(addCity(city)),
+		getForecastAction: city => dispatch(getForecast(city))
 	}
 }
 
