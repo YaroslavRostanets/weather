@@ -36,7 +36,7 @@ body {
 	width: 50%;
 }
 .content-last {
-    width: 20%;
+    flex-grow: 1;
     text-align: center;
     border-left: 1px solid #344152;
     margin: 0 4px;

@@ -5,7 +5,6 @@ import { List, ListItem, Paper, Typography } from '@material-ui/core';
 import CitiesListItem from './CitiesListItem';
 import InfoIcon from '@material-ui/icons/Info';
 import { removeCity, getWeatherNow, setDetailCity } from '../actions/citiesActions';
-import { setActiveItem } from '../actions/uiActions';
 
 class CitiesList extends PureComponent {
 
@@ -58,8 +57,7 @@ const mapDispatchToProps = dispatch => {
 	return {
 		removeCityAction: index => dispatch(removeCity(index)),
 		getWeatherNowAction: city => dispatch(getWeatherNow(city)),
-		setActiveItemAction: uniqueId => dispatch(setActiveItem(uniqueId)),
-		setDetailCityAction: city => dispatch(setDetailCity(city))
+		setDetailCityAction: uniqueId => dispatch(setDetailCity(uniqueId))
 	}
 }
 

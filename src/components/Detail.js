@@ -1,5 +1,6 @@
 import React, {Component, PureComponent} from 'react';
 import { Paper, Typography, Table, TableBody, TableRow, TableCell, LinearProgress } from '@material-ui/core';
+import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import Forecast from './Forecast';
 
 class Detail extends PureComponent {
@@ -47,19 +48,22 @@ class DetailForecast extends PureComponent {
 							<TableBody>
 								<TableRow>
 									<TableCell>Атмосферное давление</TableCell>
-									<TableCell>{weather.main.pressure} гПа</TableCell>
+									<TableCell><b>{weather.main.pressure}  гПа</b></TableCell>
 								</TableRow>
 								<TableRow>
 									<TableCell>Влажность</TableCell>
-									<TableCell>{weather.main.humidity} %</TableCell>
+									<TableCell><b>{weather.main.humidity}  %</b></TableCell>
 								</TableRow>
 								<TableRow>
 									<TableCell>Скорость ветра</TableCell>
-									<TableCell>{weather.wind.speed} м/с</TableCell>
+									<TableCell><b>{weather.wind.speed}  м/с</b></TableCell>
 								</TableRow>
 								<TableRow>
 									<TableCell>Направление ветра</TableCell>
-									<TableCell>{weather.wind.deg}</TableCell>
+									<TableCell>
+										<ArrowUpward 
+											style={{transform: `rotate(${weather.wind.deg}deg)`, color: '#DD4F43'}}/>
+									</TableCell>
 								</TableRow>
 							</TableBody>
 						</Table>
@@ -76,9 +80,20 @@ class DetailForecast extends PureComponent {
 		);
 	}
 
-	componentDidMount() {
+	componentDidMount(){
 		let {getForecastAction} = this.props;
 		getForecastAction(this.props.cityDetail);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		let {getForecastAction} = this.props;
+		let {cityDetail} = this.props;
+
+		setTimeout(()=>{
+			if(JSON.stringify(cityDetail) !== JSON.stringify(nextProps.cityDetail)) {
+				getForecastAction(nextProps.cityDetail);
+			}
+		},2000);
 	}
 
 }
