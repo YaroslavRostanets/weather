@@ -7,6 +7,9 @@ const Forecast = (props) => {
 			{ Object.keys(forecast).map(function(day,index){
 				let item = forecast[day];
 				let date = new Date( Number(item[0]['dt'] + '000') );
+				let show = (itemArray) => {
+					return itemArray.length > 5 ? itemArray[5] : itemArray[itemArray.length - 1]
+				}
 				return (
 					<div key={index} className="content-last">
 						<h6 style={{textTransform: 'capitalize'}}>
@@ -15,11 +18,11 @@ const Forecast = (props) => {
 						<div style={{textTransform: 'capitalize'}} className="data">
 							{date.getDate()} {date.toLocaleString('ru-ru', {  month: 'short' })}
 						</div>
-						<img src={`https://openweathermap.org/img/w/${item[5].weather[0].icon}.png`} alt=" " />
+						<img src={`https://openweathermap.org/img/w/${show(item).weather[0].icon}.png`} alt=" " />
 						<div style={{textTransform: 'capitalize'}} className="data">
-							{item[5].weather[0].description}
+							{show(item).weather[0].description}
 						</div>
-						<p>{Math.floor(item[5].main.temp) + '\u2103'}</p>
+						<p>{Math.floor(show(item).main.temp) + '\u2103'}</p>
 					</div>
 					)
 				}) }
