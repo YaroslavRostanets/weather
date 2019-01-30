@@ -15,7 +15,7 @@ const Forecast = (props) => {
 						<div style={{textTransform: 'capitalize'}} className="data">
 							{date.getDate()} {date.toLocaleString('ru-ru', {  month: 'short' })}
 						</div>
-						<img src={`http://openweathermap.org/img/w/${item[5].weather[0].icon}.png`} alt=" " />
+						<img src={`https://openweathermap.org/img/w/${item[5].weather[0].icon}.png`} alt=" " />
 						<div style={{textTransform: 'capitalize'}} className="data">
 							{item[5].weather[0].description}
 						</div>

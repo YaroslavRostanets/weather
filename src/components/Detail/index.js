@@ -36,7 +36,7 @@ class DetailForecast extends PureComponent {
 					</div>
 					<div className="content-right">
 						<h5 style={{textTransform: 'capitalize'}}>{weather.weather[0].description}</h5>
-						<img src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt=" " />
+						<img src={`https://openweathermap.org/img/w/${weather.weather[0].icon}.png`} alt=" " />
 					</div>
 					<div className="content-table">
 						<Table style={{background: '#FFFFFF', fontSize: '13px'}}>
