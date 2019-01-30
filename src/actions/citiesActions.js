@@ -58,7 +58,7 @@ export function setDetailCity(uniqueId) {
 }
 
 export function getForecast(city) {
-	console.log('city: ', city);
+
 	return dispatch => {
 		dispatch({
 	    	type: GET_FORECAST_REQUEST
@@ -84,13 +84,12 @@ export function getForecast(city) {
 		    			if ( Array.isArray(forecastDays[day]) ){
 		    				forecastDays[day].push(item);
 		    			} else {
-							forecastDays[day] = new Array();
+							forecastDays[day] = [];
 							forecastDays[day].push(item);
 		    			}
 		    			
 		    		}
 		    	});
-		    	console.log(forecastDays);
 		    	dispatch({
         			type: GET_FORECAST_SUCCESS,
         			payload: forecastDays,

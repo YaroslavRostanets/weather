@@ -3,9 +3,6 @@ import { ListItem, ListItemText, ListItemSecondaryAction, IconButton } from '@ma
 import DeleteIcon from '@material-ui/icons/Delete';
 
 class CitiesListItem extends PureComponent {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		const {city} = this.props;

@@ -3,17 +3,17 @@ import { ADD_CITY,
 		 /*GET_WEATHER_REQUEST, */
 		 GET_WEATHER_SUCCESS,
 		 SET_DETAIL_CITY,
-		 GET_FORECAST_SUCCESS
+		 GET_FORECAST_SUCCESS,
 		  } from '../actions/citiesActions';
 
-const initialState = {
-	citiesList: [{
-		name: 'Киев',
-		coordinates: {lat: 50.4501, lng: 30.523400000000038},
-		uniqueId: Symbol()
-	}],
-	activeUniqueId: null
-}
+var initialState = {
+		citiesList: [{
+			name: 'Киев',
+			coordinates: {lat: 50.4501, lng: 30.523400000000038},
+			uniqueId: new Date().valueOf()
+		}],
+		activeUniqueId: null
+	}
 
 export default function citiesReducer(state = initialState, action) {
 	const copy = [...state.citiesList];
@@ -34,7 +34,6 @@ export default function citiesReducer(state = initialState, action) {
 			});
 			return {...state, citiesList: copy}
 		case SET_DETAIL_CITY:
-			console.log('activeUniqueId :', action);
 			return {...state, activeUniqueId: action.payload}
 		case GET_FORECAST_SUCCESS:
 			copy.some(function(item, index){

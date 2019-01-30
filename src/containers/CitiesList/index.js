@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { List, ListItem, Paper, Typography } from '@material-ui/core';
 import CitiesListItem from './CitiesListItem';
 import InfoIcon from '@material-ui/icons/Info';
-import { removeCity, getWeatherNow, setDetailCity } from '../actions/citiesActions';
+import { removeCity, getWeatherNow, setDetailCity } from '../../actions/citiesActions';
 
 class CitiesList extends PureComponent {
 
 	render() {
 
 	const cities = this.props.citiesList;
-	const { removeCityAction, getWeatherNowAction, setActiveItemAction, setDetailCityAction } = this.props;
+	const { removeCityAction, getWeatherNowAction, setDetailCityAction } = this.props;
 	const { activeUniqueId } = this.props;
 	const empty = <ListItem>
 					<Typography gcomponent="p" style={{padding: '15px'}}>

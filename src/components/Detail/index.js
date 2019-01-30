@@ -1,35 +1,30 @@
-import React, {Component, PureComponent} from 'react';
+import React, {PureComponent} from 'react';
 import { Paper, Typography, Table, TableBody, TableRow, TableCell, LinearProgress } from '@material-ui/core';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import Forecast from './Forecast';
 
-class Detail extends PureComponent {
+const Detail = (props) => {
+	const {cityDetail} = props;
+	const {getForecastAction} = props;
 
-	render(){
-		const {cityDetail} = this.props;
-		const {getForecastAction} = this.props;
+	const empty = <Typography variant="h6" component="h5">
+          			Выберите нужный город из списка 
+        		  </Typography>;
 
-		const empty = <Typography variant="h6" component="h5">
-          				Выберите нужный город из списка 
-        			  </Typography>;
-
-		return(
-			<Paper elevation={1} style={{padding: '24px'}}>
-				{ cityDetail && 'weather' in cityDetail ? <DetailForecast 
+	return(
+		<Paper elevation={1} style={{padding: '24px'}}>
+			{ cityDetail && 'weather' in cityDetail ? <DetailForecast 
 															cityDetail={cityDetail}
 															getForecastAction={getForecastAction}
 															weather={cityDetail.weather} /> : empty } 
-			</Paper>
-		)
-	}
-
+		</Paper>
+	)
 }
 
 class DetailForecast extends PureComponent {
 
 	render() {
 		const { weather, cityDetail } = this.props;
-		const { getForecastAction } = this.props;
 		const date = new Date().toLocaleString('ru', {year: 'numeric', month: 'long', day: 'numeric'});
 
 		return(
@@ -93,7 +88,7 @@ class DetailForecast extends PureComponent {
 			if(JSON.stringify(cityDetail) !== JSON.stringify(nextProps.cityDetail)) {
 				getForecastAction(nextProps.cityDetail);
 			}
-		},2000);
+		},1000);
 	}
 
 }

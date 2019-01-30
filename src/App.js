@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { CssBaseline, Grid, AppBar, Toolbar, Typography } from '@material-ui/core';
 import './App.css';
 
-import CitiesAdder from './containers/CitiesAdder';
-import CitiesList from './components/CitiesList';
+import CitiesAdder from './components/CitiesAdder';
+import CitiesList from './containers/CitiesList';
 import Detail from './components/Detail';
 
 import { addCity, getForecast } from './actions/citiesActions';
