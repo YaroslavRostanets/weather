@@ -12,6 +12,7 @@ import { addCity, getForecast } from './actions/citiesActions';
 class App extends Component {
 
 	render() {
+		console.log('-TEST-');
 		const {addCityAction, getForecastAction} = this.props;
 		const { activeUniqueId } = this.props;
 		const cityDetail = this.props.cities.find(function(city){
