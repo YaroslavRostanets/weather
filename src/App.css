@@ -37,9 +37,10 @@ body {
 }
 .content-last {
     flex-grow: 1;
+    width: 20%;
     text-align: center;
     border-left: 1px solid #344152;
-    margin: 0 4px;
+    padding: 0 4px;
 }
 .content-last h6 {
     margin-bottom: 0;
@@ -78,4 +79,65 @@ body {
     font-size: 16px;
     margin-bottom: 15px;
     margin-top: 15px;
+}
+.cities-adder {
+    padding: 15px; 
+    margin-bottom: 16px;
+}
+@media (max-width: 960px) {
+    .aside-wrap {
+        display: flex;
+    }
+    .cities-adder {
+        width: 50%;
+        flex-grow: 1;
+        margin-bottom: 0 !important;
+        margin-right: 20px;
+    }
+    .cities-list {
+        width: 50%;
+    }
+    .cities-adder-field {
+        width: 100%;
+    }
+}
+@media (max-width: 540px) {
+    .container {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    .cities-adder {
+        margin-right: 0;
+        width: 100%;
+        margin-bottom: 16px !important;
+    }
+    .cities-list {
+        width: 100%;
+    }
+    .aside-wrap {
+        flex-wrap: wrap;
+    }
+    .content-top .top {
+        flex-wrap: wrap;
+    }
+    .content-table {
+        width: 100%;
+        margin-top: 25px;
+    }
+    .content-table td {
+        padding: 4px 10px 4px 10px !important;
+    }
+    .content-left {
+        width: 50%;
+    }
+    .forecast {
+        flex-wrap: wrap;
+    }
+    .content-last {
+        width: 50%;
+        margin-bottom: 10px;
+    }
+    .content-last:nth-child(odd) {
+        border-left: none;
+    }
 }

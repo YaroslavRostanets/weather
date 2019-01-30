@@ -29,11 +29,11 @@ class App extends Component {
 			        </Toolbar>
       			</AppBar>
       			<Grid className="container" container spacing={16}>
-      				<Grid item xs={3}>
-      					<CitiesAdder addCityAction={addCityAction} />
-						<CitiesList />
+      				<Grid className="aside-wrap" item xs={12} md={3}>
+      					<CitiesAdder addCityAction={addCityAction} className="cities-adder" />
+						<CitiesList className="cities-list"/>
       				</Grid>
-      				<Grid item xs={9}>
+      				<Grid item xs={12} md={9}>
       					<Detail cityDetail={cityDetail} getForecastAction={getForecastAction} />
       				</Grid>
       			</Grid>

@@ -2,14 +2,16 @@ import React from 'react';
 
 const Forecast = (props) => {
 	const { forecast } = props;
+	const sortedKeys = Object.keys(forecast).sort((a, b)=>{ return forecast[a][0].dt - forecast[b][0].dt }); 
+	//сортируем по дате ключи
 	return(
 		<div className="forecast">
-			{ Object.keys(forecast).map(function(day,index){
+			{ 	sortedKeys.map(function(day,index){
 				let item = forecast[day];
 				let date = new Date( Number(item[0]['dt'] + '000') );
 				let show = (itemArray) => {
 					return itemArray.length > 5 ? itemArray[5] : itemArray[itemArray.length - 1]
-				}
+					}
 				return (
 					<div key={index} className="content-last">
 						<h6 style={{textTransform: 'capitalize'}}>
@@ -25,7 +27,8 @@ const Forecast = (props) => {
 						<p>{Math.floor(show(item).main.temp) + '\u2103'}</p>
 					</div>
 					)
-				}) }
+				}) 
+			}
 		</div>
 		)
 }

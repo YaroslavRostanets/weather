@@ -60,7 +60,7 @@ class CitiesAdder extends Component {
 		};
 		
 		return (
-			<Paper elevation={1} style={{padding: '15px', marginBottom: '16px'}}>
+			<Paper elevation={1} className="cities-adder">
 				<Typography variant="h6" component="h6"
 					align="center"
 					style={{lineHeight: 'normal', fontSize: '1.15rem', marginBottom: '16px'}}>

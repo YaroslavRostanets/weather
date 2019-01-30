@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { List, ListItem, Paper, Typography } from '@material-ui/core';
+import { List, ListItem, ListItemText, Paper, Typography, Avatar } from '@material-ui/core';
 import CitiesListItem from './CitiesListItem';
 import InfoIcon from '@material-ui/icons/Info';
 import { removeCity, getWeatherNow, setDetailCity } from '../../actions/citiesActions';
@@ -14,14 +14,17 @@ class CitiesList extends PureComponent {
 	const { removeCityAction, getWeatherNowAction, setDetailCityAction } = this.props;
 	const { activeUniqueId } = this.props;
 	const empty = <ListItem>
-					<Typography gcomponent="p" style={{padding: '15px'}}>
-            		 	Список городов пуст
-          		  	</Typography>
-          		  	<InfoIcon/>
-          		  	</ListItem>
+        				<Avatar>
+          					<InfoIcon/>
+        				</Avatar>
+        				<ListItemText 
+        					primary="Список городов пуст" 
+        					secondary="Нужно добавить город в список" />
+      				</ListItem>
+
 
 		return (
-			<Paper>
+			<Paper className="cities-list">
 				<List component="nav">
 					{ cities.length ? null : empty }
 					{cities.map( function(city, index){
