@@ -30,7 +30,7 @@ export function getWeatherNow(city) {
 
     	let { lat, lng } = city.coordinates;
 		
-		fetch(`http://api.openweathermap.org/data/2.5/weather?
+		fetch(`https://api.openweathermap.org/data/2.5/weather?
 			lat=${lat}
 			&lon=${lng}
 			&units=metric
@@ -66,7 +66,7 @@ export function getForecast(city) {
 
     	let { lat, lng } = city.coordinates;
 		
-		fetch(`http://api.openweathermap.org/data/2.5/forecast?
+		fetch(`https://api.openweathermap.org/data/2.5/forecast?
 			lat=${lat}
 			&lon=${lng}
 			&units=metric
